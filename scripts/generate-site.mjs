@@ -173,14 +173,39 @@ function buildLayoutSource() {
   source = replaceRequired(source, "Кооперативная улица, 4, корп. 9\\\\A Москва · м. Спортивная   ↗", `${site.location.mapCardAddress}\\\\A ${site.location.cityMetro}   ↗`, "map card address");
   source = replaceRequired(source, "yandex.ru/maps/org/claytone", site.links.yandexMapHrefMatch, "map selector");
   source = replaceRequired(source, 'content: "Москва · м. Спортивная";', `content: ${ts(site.location.cityMetro)};`, "map compact location");
+  source = replaceRequired(
+    source,
+    'data-url="https://n962951.yclients.com/company/894717/personal/select-time"',
+    `data-url="${site.links.bookingUrl}"`,
+    "booking proxy URL",
+  );
+  source = replaceRequired(
+    source,
+    'src="//w962951.yclients.com/widgetJS"',
+    `src="${site.links.bookingWidgetScriptUrl}"`,
+    "booking widget script",
+  );
 
+  return source;
+}
+
+function buildEnhancementsSource() {
+  let source = readCommitted("public/claytone-enhancements.js");
+  source = replaceRequired(
+    source,
+    "    enhanceGalleryPhotos();\n    observeGalleryPhotos();\n    enhancePromotions();\n",
+    "    // Visible customer photos are controlled by site-data.mjs.\n",
+    "legacy runtime image overrides",
+  );
   return source;
 }
 
 const mobile = buildMobileSource();
 const layout = buildLayoutSource();
+const enhancements = buildEnhancementsSource();
 
 writeFileSync(resolve(root, "app/mobile-claytone.tsx"), mobile, "utf8");
 writeFileSync(resolve(root, "app/layout.tsx"), layout, "utf8");
+writeFileSync(resolve(root, "public/claytone-enhancements.js"), enhancements, "utf8");
 
 console.log(`TANEM site data applied: ${site.master.name} / ${site.brand.name}`);
