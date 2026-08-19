@@ -100,7 +100,6 @@ const promotions = ${ts(site.promotions)};
     ["<h1>Нонна — мастер <em>ногтевого сервиса</em></h1>", `<h1>${name} — мастер <em>${profession}</em></h1>`],
     ['<p className="mct-hero-copy">Маникюр, педикюр и наращивание с аккуратной обработкой, стерильными инструментами и вниманием к форме.</p>', `<p className="mct-hero-copy">${site.master.heroCopy}</p>`],
     ['<img src="/assets/nonna-portrait.jpeg" alt="Нонна, мастер ногтевого сервиса ClayTone" />', `<img src="${site.images.portrait}" alt="${name}, ${site.master.profession} ${brand}" />`],
-    ["<figcaption><span>ClayTone</span><small>Индивидуальная работа мастера</small></figcaption>", `<figcaption><span>${brand}</span><small>Индивидуальная работа мастера</small></figcaption>`],
     ['<div className="mct-stat"><strong>8</strong><span>лет опыта</span></div>', `<div className="mct-stat"><strong>${site.master.experienceYears}</strong><span>лет опыта</span></div>`],
     ['<div className="mct-stat"><strong>5,0 <i className="mct-stat-star">★</i></strong><span>рейтинг</span></div>', `<div className="mct-stat"><strong>${site.reputation.rating} <i className="mct-stat-star">★</i></strong><span>рейтинг</span></div>`],
     ['<div className="mct-stat"><strong>95</strong><span>оценок</span></div>', `<div className="mct-stat"><strong>${site.reputation.reviewCount}</strong><span>оценок</span></div>`],
