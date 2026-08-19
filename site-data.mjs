@@ -51,6 +51,7 @@ export default {
 
   links: {
     bookingUrl: `${yclientsBase}/select-time`,
+    bookingWidgetScriptUrl: "//w962951.yclients.com/widgetJS",
     reviewsUrl: "https://yandex.ru/maps/org/claytone/132613437697/reviews/?ll=37.567420%2C55.724018&tab=reviews&z=17.08",
     mapUrl: "https://yandex.ru/maps/org/claytone/132613437697/?ll=37.567419%2C55.724018&z=16",
     routeUrl: "https://yandex.ru/maps/?mode=routes&rtext=~55.724018%2C37.567419&rtt=auto",
@@ -72,12 +73,14 @@ export default {
       { src: "/assets/before-after-recovery.webp", alt: "До и после — восстановление ногтей и аккуратный нюдовый маникюр" },
       { src: "/assets/before-after-natural.webp", alt: "До и после — натуральный маникюр и выравнивание формы" },
     ],
+    // These are the photos the live Nonna site actually shows after its old runtime overrides.
+    // Keeping the visible versions here lets us remove those hidden overrides without changing the site.
     gallery: [
-      { src: "/assets/work-01.webp", alt: "Работа Нонны — нежный маникюр с тонким френчем" },
-      { src: "/assets/work-02.webp", alt: "Работа Нонны — аккуратный нюдовый маникюр" },
-      { src: "/assets/work-03.webp", alt: "Работа Нонны — розовый маникюр мягкой формы" },
-      { src: "/assets/work-04.webp", alt: "Работа Нонны — молочный френч" },
-      { src: "/assets/work-05.webp", alt: "Работа Нонны — натуральный розовый маникюр" },
+      { src: "/assets/photo1.jpg", alt: "Работа ClayTone — новое фото 1" },
+      { src: "/assets/photo2.jpg", alt: "Работа ClayTone — новое фото 2" },
+      { src: "/assets/photo3.jpg", alt: "Работа ClayTone — новое фото 3" },
+      { src: "/assets/photo4.jpg", alt: "Работа ClayTone — новое фото 4" },
+      { src: "/assets/photo5.jpg", alt: "Работа ClayTone — новое фото 5" },
       { src: "/assets/work-06.webp", alt: "Работа Нонны — маникюр винного оттенка" },
       { src: "/assets/work-07.webp", alt: "Работа Нонны — графичный тёмный дизайн" },
       { src: "/assets/mobile-work-french.webp", alt: "Работа Нонны — чистый френч на мягком квадрате" },
@@ -85,7 +88,7 @@ export default {
       { src: "/assets/mobile-work-wine.webp", alt: "Работа Нонны — глубокий винный оттенок" },
       { src: "/assets/portfolio-french.webp", alt: "Работа Нонны — тонкий молочный френч" },
       { src: "/assets/portfolio-pearl.webp", alt: "Работа Нонны — перламутровый нюд" },
-      { src: "/assets/portfolio-wine.webp", alt: "Работа Нонны — вишнёвый маникюр" },
+      { src: "/assets/photo6.jpg", alt: "Работа ClayTone — новое фото 6" },
     ],
   },
 
@@ -129,16 +132,16 @@ export default {
       highlight: "Карта лояльности в подарок",
       description: "Скидка действует уже на первом посещении. С картой лояльности пятое посещение — −5%, десятое — −10%.",
       period: "до 31 августа 2026",
-      image: "/assets/promotion-first-visit-original.jpg",
-      alt: "Оригинальные карты лояльности ClayTone — подарок при первом посещении",
+      image: "/assets/photohh1.jpg",
+      alt: "Первая акция ClayTone",
     },
     {
       title: "Комбо: маникюр + педикюр",
       highlight: "Экономия 550 ₽",
       description: "Маникюр и педикюр с покрытием в одной записи. Экономия 550 ₽, продолжительность — от двух до трёх часов.",
       period: "до 31 декабря 2026",
-      image: "/assets/work-01.webp",
-      alt: "Работа мастера ClayTone — комбо маникюр и педикюр с покрытием",
+      image: "/assets/photohh2.jpg",
+      alt: "Вторая акция ClayTone",
     },
   ],
 
