@@ -3,6 +3,8 @@ name: Validate TANEM master data
 on:
   push:
     branches: [agent/master-data-refactor]
+  pull_request:
+    branches: [main]
 
 permissions:
   contents: read
