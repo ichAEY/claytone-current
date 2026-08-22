@@ -3,11 +3,6 @@
   const siteBase = new URL("./", scriptUrl);
   const assetUrl = (name) => new URL(`assets/${name}`, siteBase).href;
 
-  const tanemMetrikaScript = document.createElement("script");
-  tanemMetrikaScript.src = new URL("tanem-metrika-events.js?v=20260822-1", siteBase).href;
-  tanemMetrikaScript.defer = true;
-  document.head.appendChild(tanemMetrikaScript);
-
   const galleryReplacements = new Map([
     ["work-01.webp", ["photo1.jpg", "Работа ClayTone — новое фото 1"]],
     ["work-02.webp", ["photo2.jpg", "Работа ClayTone — новое фото 2"]],
