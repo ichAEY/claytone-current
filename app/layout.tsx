@@ -215,7 +215,7 @@ export default function RootLayout({
           aria-hidden="true"
           tabIndex={-1}
         />
-        <script src="tanem-metrika-events.js?v=20260822-2" defer />
+        <script src="tanem-metrika-events.js?v=20260822-3" defer />
         <script src="claytone-enhancements.js?v=20260822-1" defer />
         <script src="android-scroll-fix.js?v=20260813-2" defer />
         <script
