@@ -9,27 +9,73 @@
     } catch (_) {}
   }
 
+  function normalizedHref(element) {
+    return String(element?.getAttribute?.("href") || element?.dataset?.url || "").trim();
+  }
+
   function classify(element) {
-    const href = String(element.getAttribute?.("href") || "").toLowerCase();
-    const text = String(element.textContent || "").trim().toLowerCase();
-    const classes = String(element.className || "").toLowerCase();
-    const id = String(element.id || "").toLowerCase();
+    const rawHref = normalizedHref(element);
+    const href = rawHref.toLowerCase();
+    const text = String(element?.textContent || "").trim().toLowerCase();
+    const classes = String(element?.className || "").toLowerCase();
+    const id = String(element?.id || "").toLowerCase();
 
     if (href.startsWith("tel:")) return "tanem_phone";
+    if (href.startsWith("mailto:")) return "tanem_email";
     if (href.includes("wa.me") || href.includes("whatsapp.com")) return "tanem_whatsapp";
     if (href.includes("t.me/") || href.startsWith("tg:")) return "tanem_telegram";
-    if (href.includes("yandex.ru/maps") || href.includes("yandex.com/maps") || href.includes("2gis")) return "tanem_map";
+
     if (
       href.includes("yclients") || href.includes("dikidi") ||
       classes.includes("ms_booking") || classes.includes("booking") ||
       id.includes("booking") || /запис(аться|ь|ься)?/.test(text)
     ) return "tanem_booking";
 
+    if (
+      (href.includes("yandex.ru/maps") || href.includes("yandex.com/maps") || href.includes("2gis")) &&
+      (href.includes("/reviews") || href.includes("tab=reviews"))
+    ) return "tanem_reviews";
+
+    if (
+      href.includes("mode=routes") || href.includes("/route") || href.includes("rtext=")
+    ) return "tanem_route";
+
+    if (href.includes("yandex.ru/maps") || href.includes("yandex.com/maps") || href.includes("2gis")) {
+      return "tanem_map";
+    }
+
+    if (href.startsWith("#")) return "tanem_internal";
+
+    if (rawHref) {
+      try {
+        const url = new URL(rawHref, window.location.href);
+        if (url.origin === window.location.origin) return "tanem_internal";
+        return "tanem_external";
+      } catch (_) {
+        return "tanem_external";
+      }
+    }
+
     return "";
   }
 
+  function resolveClickable(target) {
+    if (!(target instanceof Element)) return null;
+
+    const direct = target.closest("a[href],[data-tanem-goal],[data-url]");
+    if (direct) return direct;
+
+    // На сайте Нонны название услуги само открывает соответствующую ссылку Yclients.
+    const serviceTitle = target.closest(".mct-service-name strong");
+    if (serviceTitle) {
+      return serviceTitle.closest(".mct-service-row")?.querySelector(".mct-service-action a[href]") || null;
+    }
+
+    return null;
+  }
+
   document.addEventListener("click", (event) => {
-    const element = event.target?.closest?.("a,button,[data-tanem-goal]");
+    const element = resolveClickable(event.target);
     if (!element) return;
 
     const explicit = element.dataset?.tanemGoal;
