@@ -169,14 +169,14 @@ const mapCleanupStyles = `
     }
 
     .mct-map-wrap > a::before {
-      width: 66px;
-      height: 66px;
-      font-size: 33px;
+      width: 66px !important;
+      height: 66px !important;
+      font-size: 33px !important;
     }
 
     .mct-map-wrap > a::after {
-      font-size: 16px;
-      line-height: 1.65;
+      font-size: 16px !important;
+      line-height: 1.65 !important;
     }
   }
 `;
@@ -215,7 +215,7 @@ export default function RootLayout({
           aria-hidden="true"
           tabIndex={-1}
         />
-        <script src="tanem-metrika-events.js?v=20260822-3" defer />
+        <script src="tanem-metrika-events.js?v=20260822-4" defer />
         <script src="claytone-enhancements.js?v=20260822-1" defer />
         <script src="android-scroll-fix.js?v=20260813-2" defer />
         <script
