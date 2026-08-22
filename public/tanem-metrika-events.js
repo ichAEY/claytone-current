@@ -32,29 +32,10 @@
     ) return "tanem_booking";
 
     if (
-      (href.includes("yandex.ru/maps") || href.includes("yandex.com/maps") || href.includes("2gis")) &&
-      (href.includes("/reviews") || href.includes("tab=reviews"))
-    ) return "tanem_reviews";
-
-    if (href.includes("mode=routes") || href.includes("/route") || href.includes("rtext=")) {
-      return "tanem_route";
-    }
-
-    if (href.includes("yandex.ru/maps") || href.includes("yandex.com/maps") || href.includes("2gis")) {
-      return "tanem_map";
-    }
-
-    if (href.startsWith("#")) return "tanem_internal";
-
-    if (rawHref) {
-      try {
-        const url = new URL(rawHref, window.location.href);
-        if (url.origin === window.location.origin) return "tanem_internal";
-        return "tanem_external";
-      } catch (_) {
-        return "tanem_external";
-      }
-    }
+      href.includes("yandex.ru/maps") ||
+      href.includes("yandex.com/maps") ||
+      href.includes("2gis")
+    ) return "tanem_yandex_card";
 
     return "";
   }
