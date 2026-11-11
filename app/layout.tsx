@@ -224,6 +224,7 @@ export default function RootLayout({
           charSet="UTF-8"
           defer
         />
+        <script src="//code.jivo.ru/widget/UKYCyJNH7j" async></script>
       </body>
     </html>
   );
